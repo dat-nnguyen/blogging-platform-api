@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/dat-nnguyen/blogging-platform-api/issues"
   },
-  "homepage": "https://github.com/dat-nnguyen/blogging-platform-api#readme"
+  "homepage": "https://github.com/dat-nnguyen/blogging-platform-api#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
