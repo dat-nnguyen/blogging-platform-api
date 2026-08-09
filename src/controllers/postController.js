@@ -54,6 +54,25 @@ export async function getPostById(req, res) {
     }
 }
 
+export async function updatePost(req, res) {
+    try {
+        const { id } = req.params;
+        const { isValid, errors } = validatePostInput(req.body);
+
+        if (!isValid) {
+            return res.status(400).json({ message: 'Validation failed', errors });
+        }
+
+        const updatedPost = await postService.updatePost(id, req.body);
+        if (!updatedPost) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+        return res.status(200).json({ message: 'Post updated successfully', post: updatedPost });
+    } catch (error) {
+        return res.status(500).json({ message: 'Failed to update post', error: error.message });
+    }
+}
+
 export async function deletePost(req, res) {
     try {
         const { id } = req.params;
